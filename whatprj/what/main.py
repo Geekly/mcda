@@ -160,9 +160,44 @@ def plot2DHTKfixedPOW(ndice, POW, health):
     ax.legend(loc='upper left')
     plt.show()
     
+def plotPartialHTKwrtARM(ndice, POW, health):
+    fig = plt.figure()
+    
+    strtitle = "Value of ARM, POW vs " + str(health) + " Health"
+    ax = fig.add_subplot(111, title=strtitle, xlabel="ARM")
+    
+    boostedhtk = hitsToKill(ndice)
+    dt = damageTable(3, 0, 30, 0, 30)
 
+    #dt.expectedDamage( dmgstat(19, 15) )
+    
+    
+    #POW = 15
+    #health = 56
+    X = np.arange(9, 18, 1)
+    Y1 = np.array( [ health/((POW - x + 3.5*ndice)**2) for x in X] )
+    Y2 = np.array( [ -health/((POW - x + 3.5*ndice)**2) for x in X] )
+    Y3 = np.array( [ -1/(POW - x + 3.5*ndice) for x in X] )
+    #Y2 = np.array( [ boostedhtk.avgHitsToKill(x - POW, health)  for x in X2 ] )
+    print X
+    print Y1
+    #print Y2
+    
+    #ax.scatter( 19, boostedhtk.avgHitsToKill(19 - POW, health), c='red', marker='o')
+    #ax.scatter( 22, boostedhtk.avgHitsToKill(22 - POW, health), c='red', marker='o')
+    
+    
+    ax.plot (X, Y1, label="HTK/ARM", linewidth=2.5, c='blue')
+    ax.plot (X, Y2, label="HTK/POW", linewidth=2.5, c='red')
+    ax.plot (X, Y3, label="HTK/Health", linewidth=2.5, c='green')
+    #ax.plot ( [19, 19],[-1, boostedhtk.avgHitsToKill(19 - POW, health)], c='red' )
+    #ax.plot ( [22, 22],[-1, boostedhtk.avgHitsToKill(22 - POW, health)], c='red' )
+        
+        
+    ax.legend(loc='upper left')
+    plt.show()
 
 if __name__ == '__main__':
  
     #plotHitsToKill("Boosted Hits To Kill, Infantry")
-    plot2DHTKfixedPOW(ndice=3, POW=20, health=32)
+    plotPartialHTKwrtARM(2, 12, 1)
