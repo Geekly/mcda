@@ -72,9 +72,9 @@ if __name__ == '__main__':
     ax = fig.add_subplot(111, projection='3d')
 
     x = np.arange( -6, 10, 1)  #armminuspow
-    print x
+    print(x)
     y = np.arange( 1, 9, 1)    #health 
-    print y
+    print(y)
     
     X, Y = np.meshgrid(x, y)
 

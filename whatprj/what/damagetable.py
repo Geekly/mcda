@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 
 from collections import defaultdict
 
+
 class dmgstat(object):
     '''
     classdocs
@@ -56,7 +57,7 @@ class damageTable(object):
                 if expectedDmg < 0.0: expectedDmg = 0.0
                 self.damageTable[ARM][POW] = expectedDmg
                 
-        #print self.damageTable
+        #print(self.damageTable)
             
     def expectedDamage(self, dmgstat):
         expectedDmg = dmgstat.POW - dmgstat.ARM + self.diceavg
@@ -87,20 +88,20 @@ class damageTable(object):
             #z[x][y] = self.damageTable[x + self.armRange[0]][y + self.powRange[0]]
             #print (x, y)
             #print z[x][y]
-        print z
+        print(z)
         #need to map ranges starting at zero to use a typical array notation    
         #for key1, row in dt.damageTable.iteritems():
         #    for key2, value in row.iteritems():
         #        print  str(value), 
         #        z[key1-self.armRange[0]][key2-self.powRange[0]] = value
         #    print
-        return z         
+        return(z)         
             
 if __name__ == '__main__':
 
     dt = damageTable(3)
     
-    print dt.__array__()
+    print(dt.__array__())
 
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')

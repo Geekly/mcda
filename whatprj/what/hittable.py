@@ -4,6 +4,7 @@ Created on Feb 1, 2013
 @author: khooks
 '''
 import diceutils
+import numpy as np
 
 class hitTable(object):
     '''
@@ -65,4 +66,4 @@ if __name__ == '__main__':
     
     for entry in ht.hitTable.items():
         print entry
-    print ht
+    #print ht
